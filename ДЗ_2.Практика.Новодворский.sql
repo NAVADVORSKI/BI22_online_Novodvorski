@@ -22,4 +22,4 @@
 --SELECT LastName, FirstName
 --FROM Person.Person
 --WHERE LastName LIKE 'R%'
---ORDER BY FirstName ASC, LastName DESC  --  Вывести столбцы LastName и FirstName из таблицы Person.Person где значение в столбце LastName начинаются с "R", также отсортировать в порядке возрастания значений в столбце FirstName и при совпадении в порядке убывания значений в столбце LastName
+--ORDER BY FirstName ASC, LastName DESC  --  Р’С‹РІРµСЃС‚Рё СЃС‚РѕР»Р±С†С‹ LastName Рё FirstName РёР· С‚Р°Р±Р»РёС†С‹ Person.Person РіРґРµ Р·РЅР°С‡РµРЅРёРµ РІ СЃС‚РѕР»Р±С†Рµ LastName РЅР°С‡РёРЅР°СЋС‚СЃСЏ СЃ "R", С‚Р°РєР¶Рµ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РІ РїРѕСЂСЏРґРєРµ РІРѕР·СЂР°СЃС‚Р°РЅРёСЏ Р·РЅР°С‡РµРЅРёР№ РІ СЃС‚РѕР»Р±С†Рµ FirstName Рё РїСЂРё СЃРѕРІРїР°РґРµРЅРёРё РІ РїРѕСЂСЏРґРєРµ СѓР±С‹РІР°РЅРёСЏ Р·РЅР°С‡РµРЅРёР№ РІ СЃС‚РѕР»Р±С†Рµ LastName
