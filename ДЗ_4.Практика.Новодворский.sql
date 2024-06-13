@@ -1,9 +1,9 @@
--- схему использовал https://i0.wp.com/improveandrepeat.com/wp-content/uploads/2018/12/AdvWorksOLTPSchemaVisio.png?ssl=1 - я заметил, что в этой схеме наполнение таблиц отличается от нашей базы данных AdventureWorks
--- 2 - ProductID(первичный), SizeUnitMeasureCode(внешний к таблице UnitMeasure), WeightUnitMeasureCode(внешний к таблице UnitMeasure), ProductSubcategoryID(внешний к таблице ProductSubcategory), ProductModelID(внешний к таблице ProductModel)
+-- СЃС…РµРјСѓ РёСЃРїРѕР»СЊР·РѕРІР°Р» https://i0.wp.com/improveandrepeat.com/wp-content/uploads/2018/12/AdvWorksOLTPSchemaVisio.png?ssl=1 - СЏ Р·Р°РјРµС‚РёР», С‡С‚Рѕ РІ СЌС‚РѕР№ СЃС…РµРјРµ РЅР°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС† РѕС‚Р»РёС‡Р°РµС‚СЃСЏ РѕС‚ РЅР°С€РµР№ Р±Р°Р·С‹ РґР°РЅРЅС‹С… AdventureWorks
+-- 2 - ProductID(РїРµСЂРІРёС‡РЅС‹Р№), SizeUnitMeasureCode(РІРЅРµС€РЅРёР№ Рє С‚Р°Р±Р»РёС†Рµ UnitMeasure), WeightUnitMeasureCode(РІРЅРµС€РЅРёР№ Рє С‚Р°Р±Р»РёС†Рµ UnitMeasure), ProductSubcategoryID(РІРЅРµС€РЅРёР№ Рє С‚Р°Р±Р»РёС†Рµ ProductSubcategory), ProductModelID(РІРЅРµС€РЅРёР№ Рє С‚Р°Р±Р»РёС†Рµ ProductModel)
 
--- 3(a) Найти людей из таблицы Person.Person (вывести только их имена в 1 колонку:
---вместе Имя и Фамилию), у которых более, чем 1 телефон (самостоятельно найти
---таблицу, которая хранит телефоны людей и связаться с ней).
+-- 3(a) РќР°Р№С‚Рё Р»СЋРґРµР№ РёР· С‚Р°Р±Р»РёС†С‹ Person.Person (РІС‹РІРµСЃС‚Рё С‚РѕР»СЊРєРѕ РёС… РёРјРµРЅР° РІ 1 РєРѕР»РѕРЅРєСѓ:
+--РІРјРµСЃС‚Рµ РРјСЏ Рё Р¤Р°РјРёР»РёСЋ), Сѓ РєРѕС‚РѕСЂС‹С… Р±РѕР»РµРµ, С‡РµРј 1 С‚РµР»РµС„РѕРЅ (СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅР°Р№С‚Рё
+--С‚Р°Р±Р»РёС†Сѓ, РєРѕС‚РѕСЂР°СЏ С…СЂР°РЅРёС‚ С‚РµР»РµС„РѕРЅС‹ Р»СЋРґРµР№ Рё СЃРІСЏР·Р°С‚СЊСЃСЏ СЃ РЅРµР№).
 
 select CONCAT(FirstName, ' ', LastName) Name
 from Person.Person as PP
@@ -12,10 +12,11 @@ on PP.BusinessEntityID = PPP.BusinessEntityID
 group by CONCAT(FirstName, ' ', LastName)
 having count(distinct(PhoneNumber)) > 1
 
--- 3(b) Найти продукты (вывести названия), у которых Вендор (нужная таблица находится
---на схеме Purchasing) выставил среднюю цену по продукту больше 10. Также в имени
---вендора должна присутствовать буква А или номер аккаунта вендора должен
---начинаться на А.
+-- 3(b) РќР°Р№С‚Рё РїСЂРѕРґСѓРєС‚С‹ (РІС‹РІРµСЃС‚Рё РЅР°Р·РІР°РЅРёСЏ), Сѓ РєРѕС‚РѕСЂС‹С… Р’РµРЅРґРѕСЂ (РЅСѓР¶РЅР°СЏ С‚Р°Р±Р»РёС†Р° РЅР°С…РѕРґРёС‚СЃСЏ
+--РЅР° СЃС…РµРјРµ Purchasing) РІС‹СЃС‚Р°РІРёР» СЃСЂРµРґРЅСЋСЋ С†РµРЅСѓ РїРѕ РїСЂРѕРґСѓРєС‚Сѓ Р±РѕР»СЊС€Рµ 10. РўР°РєР¶Рµ РІ РёРјРµРЅРё
+--РІРµРЅРґРѕСЂР° РґРѕР»Р¶РЅР° РїСЂРёСЃСѓС‚СЃС‚РІРѕРІР°С‚СЊ Р±СѓРєРІР° Рђ РёР»Рё РЅРѕРјРµСЂ Р°РєРєР°СѓРЅС‚Р° РІРµРЅРґРѕСЂР° РґРѕР»Р¶РµРЅ
+--РЅР°С‡РёРЅР°С‚СЊСЃСЏ РЅР° Рђ.
+
 
 select PP.name ProductName
 from Production.Product as PP
@@ -25,8 +26,8 @@ left join Purchasing.Vendor as PV
 on PPV.BusinessEntityID = PV.BusinessEntityID
 where (PV.Name like '%a%' or PV.AccountNumber like 'A%') and PPV.StandardPrice > 10
 
--- 3(c) Найти имена всех вендоров, продукция которых не продавалась никогда (нет
---записей в таблице Purchasing.ProductVendor). 
+-- 3(c) РќР°Р№С‚Рё РёРјРµРЅР° РІСЃРµС… РІРµРЅРґРѕСЂРѕРІ, РїСЂРѕРґСѓРєС†РёСЏ РєРѕС‚РѕСЂС‹С… РЅРµ РїСЂРѕРґР°РІР°Р»Р°СЃСЊ РЅРёРєРѕРіРґР° (РЅРµС‚
+--Р·Р°РїРёСЃРµР№ РІ С‚Р°Р±Р»РёС†Рµ Purchasing.ProductVendor). 
 
 select PV.Name
 from Purchasing.Vendor as PV
@@ -34,14 +35,14 @@ left join Purchasing.ProductVendor as PPV
 on PPV.BusinessEntityID = PV.BusinessEntityID
 where PPV.BusinessEntityID is NULL
 
---4(a) Вывести имена всех сотрудников и департаменты, в которых они работают
+--4(a) Р’С‹РІРµСЃС‚Рё РёРјРµРЅР° РІСЃРµС… СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ Рё РґРµРїР°СЂС‚Р°РјРµРЅС‚С‹, РІ РєРѕС‚РѕСЂС‹С… РѕРЅРё СЂР°Р±РѕС‚Р°СЋС‚
 
 select EM.emp_name, DP.dep_name
 from employees as EM
 left join departments as DP
 on EM.dep_id = DP.dep_id
 
---4(b) Вывести департаменты и кол-во сотрудников, работающих в них
+--4(b) Р’С‹РІРµСЃС‚Рё РґРµРїР°СЂС‚Р°РјРµРЅС‚С‹ Рё РєРѕР»-РІРѕ СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ, СЂР°Р±РѕС‚Р°СЋС‰РёС… РІ РЅРёС…
 
 select DP.dep_id, COUNT(EM.dep_id) amount
 from departments as DP
@@ -49,14 +50,15 @@ left join employees as EM
 on DP.dep_id = EM.dep_id
 group by DP.dep_id
 
--- 4(c) Сделать из имени сотрудника емейл, чтобы из «Maryia Paulava» получилось «maryia_paulava@gmail.com»
+-- 4(c) РЎРґРµР»Р°С‚СЊ РёР· РёРјРµРЅРё СЃРѕС‚СЂСѓРґРЅРёРєР° РµРјРµР№Р», С‡С‚РѕР±С‹ РёР· В«Maryia PaulavaВ» РїРѕР»СѓС‡РёР»РѕСЃСЊ В«maryia_paulava@gmail.comВ»
+
 
 select lower(concat(REPLACE(emp_name, ' ', '_'), '@gmail.com')) email 
 from employees
 
--- 4(d)  Найти департамент с самой большой прибылью, вывести имя и суммарную прибыль только
---1го (лучшего) департамента. NULL – неизвестный департамент, его ОБЯЗАТЕЛЬНО учитываем!
---Если нужно – заменяем на «N.D.» 
+-- 4(d)  РќР°Р№С‚Рё РґРµРїР°СЂС‚Р°РјРµРЅС‚ СЃ СЃР°РјРѕР№ Р±РѕР»СЊС€РѕР№ РїСЂРёР±С‹Р»СЊСЋ, РІС‹РІРµСЃС‚Рё РёРјСЏ Рё СЃСѓРјРјР°СЂРЅСѓСЋ РїСЂРёР±С‹Р»СЊ С‚РѕР»СЊРєРѕ
+--1РіРѕ (Р»СѓС‡С€РµРіРѕ) РґРµРїР°СЂС‚Р°РјРµРЅС‚Р°. NULL вЂ“ РЅРµРёР·РІРµСЃС‚РЅС‹Р№ РґРµРїР°СЂС‚Р°РјРµРЅС‚, РµРіРѕ РћР‘РЇР—РђРўР•Р›Р¬РќРћ СѓС‡РёС‚С‹РІР°РµРј!
+--Р•СЃР»Рё РЅСѓР¶РЅРѕ вЂ“ Р·Р°РјРµРЅСЏРµРј РЅР° В«N.D.В» 
 
 select coalesce(SUM(revenue), 0) Revenue, coalesce(dep_name, 'N.D.') Department
 from departments as DP
@@ -66,26 +68,26 @@ full join revenue as RV
 on EM.emp_id = RV.emp_id
 group by dep_name
 
--- 5(a) Вывести данные за последние 10 лет. (используй DATEDIFF и CURRENT_TIMESTAMP)
+-- 5(a) Р’С‹РІРµСЃС‚Рё РґР°РЅРЅС‹Рµ Р·Р° РїРѕСЃР»РµРґРЅРёРµ 10 Р»РµС‚. (РёСЃРїРѕР»СЊР·СѓР№ DATEDIFF Рё CURRENT_TIMESTAMP)
 
 select *
 from Purchasing.ProductVendor
 where DATEDIFF(year, LastReceiptDate, CURRENT_TIMESTAMP) <= 10
 
--- 5(b) Вывести данные о событиях, которые произошли в такой же месяц как сегодня.
+-- 5(b) Р’С‹РІРµСЃС‚Рё РґР°РЅРЅС‹Рµ Рѕ СЃРѕР±С‹С‚РёСЏС…, РєРѕС‚РѕСЂС‹Рµ РїСЂРѕРёР·РѕС€Р»Рё РІ С‚Р°РєРѕР№ Р¶Рµ РјРµСЃСЏС† РєР°Рє СЃРµРіРѕРґРЅСЏ.
 
 select *
 from Purchasing.ProductVendor
 where month(lastreceiptdate) = month(CURRENT_TIMESTAMP)
 
--- 5(c) Вывести дни недели (словами) и количество событий в них. (Результат – максимум 7 строк на каждый день недели). 
+-- 5(c) Р’С‹РІРµСЃС‚Рё РґРЅРё РЅРµРґРµР»Рё (СЃР»РѕРІР°РјРё) Рё РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕР±С‹С‚РёР№ РІ РЅРёС…. (Р РµР·СѓР»СЊС‚Р°С‚ вЂ“ РјР°РєСЃРёРјСѓРј 7 СЃС‚СЂРѕРє РЅР° РєР°Р¶РґС‹Р№ РґРµРЅСЊ РЅРµРґРµР»Рё).  
 
 select datename(weekday, lastreceiptdate) Day_Name, count(*) Cnt
 from Purchasing.ProductVendor
 group by datename(weekday, lastreceiptdate)
 
--- 5(d) Вывести в отдельные колонки: день, месяц, год и дополнительно 3 колонки:
---сколько событий было в такое число, в такой месяц, в такой год
+-- 5(d) Р’С‹РІРµСЃС‚Рё РІ РѕС‚РґРµР»СЊРЅС‹Рµ РєРѕР»РѕРЅРєРё: РґРµРЅСЊ, РјРµСЃСЏС†, РіРѕРґ Рё РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ 3 РєРѕР»РѕРЅРєРё:
+--СЃРєРѕР»СЊРєРѕ СЃРѕР±С‹С‚РёР№ Р±С‹Р»Рѕ РІ С‚Р°РєРѕРµ С‡РёСЃР»Рѕ, РІ С‚Р°РєРѕР№ РјРµСЃСЏС†, РІ С‚Р°РєРѕР№ РіРѕРґ
 
 select 
 	day(lastreceiptdate) DayNum, 
