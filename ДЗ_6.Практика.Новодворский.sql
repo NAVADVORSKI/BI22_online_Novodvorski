@@ -1,4 +1,4 @@
--- 1 -- оконные функции ROW_NUMBER(), RANK(), и DENSE_RANK() возвращают одинаковый результат, когда в выборке нет дубликатов.
+-- 1 -- РѕРєРѕРЅРЅС‹Рµ С„СѓРЅРєС†РёРё ROW_NUMBER(), RANK(), Рё DENSE_RANK() РІРѕР·РІСЂР°С‰Р°СЋС‚ РѕРґРёРЅР°РєРѕРІС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚, РєРѕРіРґР° РІ РІС‹Р±РѕСЂРєРµ РЅРµС‚ РґСѓР±Р»РёРєР°С‚РѕРІ.
 
 -- 2 (a)
 
@@ -47,5 +47,5 @@ select CONCAT(UPPER(SUBSTRING(LastName, 1, 3)), 'login', TerritoryGroup) as Name
 		Rank() over (order by SalesLastYear desc) as Rank_LY
 from Sales.vSalesPerson
 
--- MITloginNorth America возглавляет список в текущем году (Rank_CY), VARloginEurope возглавлял список в прошлом году (Rank_LY).
--- Возник вопрос: Как в данном случае выполнить проверку на Null в Select?
+-- MITloginNorth America РІРѕР·РіР»Р°РІР»СЏРµС‚ СЃРїРёСЃРѕРє РІ С‚РµРєСѓС‰РµРј РіРѕРґСѓ (Rank_CY), VARloginEurope РІРѕР·РіР»Р°РІР»СЏР» СЃРїРёСЃРѕРє РІ РїСЂРѕС€Р»РѕРј РіРѕРґСѓ (Rank_LY).
+-- Р’РѕР·РЅРёРє РІРѕРїСЂРѕСЃ: РљР°Рє РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ РІС‹РїРѕР»РЅРёС‚СЊ РїСЂРѕРІРµСЂРєСѓ РЅР° Null РІ Select?
